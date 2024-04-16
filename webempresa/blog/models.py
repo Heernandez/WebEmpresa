@@ -21,7 +21,7 @@ class Post(models.Model):
     published = models.DateTimeField(verbose_name="Fecha de publicación",default=now()) #auto_now_add=True captura el valor y lo guarda, solo en la creacion
     image = models.ImageField(verbose_name="Imagen", upload_to="blog",null=True,blank=True)
     author = models.ForeignKey(User,verbose_name="Autor", on_delete=models.CASCADE)
-    categories = models.ManyToManyField(Category,verbose_name="Categorias")
+    categories = models.ManyToManyField(Category,verbose_name="Categorias",related_name="get_posts")
     created = models.DateTimeField(auto_now_add=True,verbose_name="Fecha de creación") #auto_now_add=True captura el valor y lo guarda, solo en la creacion
     updated = models.DateTimeField(auto_now=True,verbose_name="Fecha de actualización") # captura el valor y lo guarda en cada actualizacion
 

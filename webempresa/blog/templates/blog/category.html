@@ -1,12 +1,12 @@
 {% extends 'core/base.html' %}
 <!-- Nombre en la pestaña-->
-{% block title %}Blog{% endblock %} 
+{% block title %}Categoria{% endblock %} 
 
 <!-- Contenido-->
 {% block content %}
 <section class="page-section cta">
     <div class="container">
-    {% for blog in blogs %}
+    {% for blog in category.get_posts.all %}
         <div class="row">
             <div class="col-xl-9 mx-auto">
                 <div class="cta-innerv text-center rounded">
@@ -23,11 +23,14 @@
                     {{blog.content|linebreaks}}
                     </p>
                     <p class="mb-0 mbt">
-                    <span class="section-heading-under">Publicado por <em><b>{{blog.author__username}}</b></em> en <em>
-                    <!--<a href="#" class="link">General</a>, <a href="#" class="link">Ofertas</a></em></span> -->
-                    {% for category in blog.categories.all %}
-                        {{category.name}}{% if not forloop.last%},{% endif %}
-                    {% endfor %}
+                        <span class="section-heading-under">Publicado por <em><b>{{blog.author__username}}</b></em> en <em>
+                        <!--<a href="#" class="link">General</a>, <a href="#" class="link">Ofertas</a></em></span> -->
+                            <em>
+                                {% for category in blog.categories.all %}
+                                    <a href="{% url 'categoryPage' category.id %}" class="link">{{category.name}}</a>{% if not forloop.last%},{% endif %}
+                                {% endfor %}
+                            </em>
+                        </span>
                     </p>
                 </div>
             </div>

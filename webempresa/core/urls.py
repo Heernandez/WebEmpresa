@@ -4,6 +4,5 @@ urlpatterns = [
     path("", views.home, name="homePage"),
     path("about/", views.about, name="aboutPage"),
     path("store/", views.store, name="storePage"),
-    path("contact/", views.contact, name="contactPage"),
-    path("sample/", views.contact, name="samplePage"),
+    #path("contact/", views.contact, name="contactPage"),
 ]

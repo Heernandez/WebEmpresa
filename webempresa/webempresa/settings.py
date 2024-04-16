@@ -38,9 +38,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "ckeditor",
     "blog",
     "core",
     "service.apps.ServiceConfig",
+    "social.apps.SocialConfig",
+    "pages.apps.PagesConfig",
+    "contact",
 ]
 
 MIDDLEWARE = [
@@ -66,6 +70,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social.processors.ctx_dict",
+                #"pages.processors.ctx_pages", lo quité para usar template tag propio
             ],
         },
     },
@@ -121,3 +127,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+#ckeditor
+'''
+config personalizada o en None muestra todas las herramientas
+CKEDITOR_CONFIGS = {
+    "default":{
+        "toolbar":None,
+    }
+}
+'''
+
+#Email config
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '5445bbce5a58cf'
+EMAIL_HOST_PASSWORD = '0c4cee1495206c'
+EMAIL_PORT = '2525'
